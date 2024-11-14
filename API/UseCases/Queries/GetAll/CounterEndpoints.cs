@@ -9,7 +9,7 @@ namespace API.UseCases.Queries.GetAll
     {
         public static void MapGetAllCounterEndpoints(this IEndpointRouteBuilder app)
         {
-            _ = app.MapGet("counter", GetAllCounter)
+            _ = app.MapGet("counters", GetAllCounter)
                 .Produces<List<Counter>>()
                 .Produces<ResultEntity>(StatusCodes.Status400BadRequest)
                 .Produces<ResultEntity>(StatusCodes.Status404NotFound)
