@@ -3,7 +3,15 @@ using API.UseCases.Queries.GetAll;
 using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost", policy =>
+    {
+        policy.AllowAnyOrigin()    
+             .AllowAnyHeader()    
+             .AllowAnyMethod();                 
+    });
+});
 // Register services with the custom extension method
 builder.AddCounterMgtInfrastructure(builder.Configuration);
 
@@ -15,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowLocalhost");
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();

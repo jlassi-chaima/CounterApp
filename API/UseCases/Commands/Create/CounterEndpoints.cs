@@ -10,8 +10,7 @@ namespace API.UseCases.Commands.Create
 
         public static void MapCreateCounterEndpoints(this IEndpointRouteBuilder app)
         {
-            _ = app.MapPost("counters", CreateCounter)
-                //.AddEndpointFilter<ValidationFilter<CreateCustomFieldCommandUseCase>>()
+            _ = app.MapPost("counter", CreateCounter) 
                 .Produces<ResultEntity>()
                 .Produces<ResultEntity>(StatusCodes.Status400BadRequest)
                 .Produces<ResultEntity>(StatusCodes.Status500InternalServerError)
