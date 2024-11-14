@@ -32,7 +32,7 @@ namespace Application.UsesCases.Counters.Queries.GetAll
                 Log.Error("An unhandled exception has been thrown {0}", ex);
                 return Results.BadRequest(new ResultEntity
                 {
-                    OutMessage = "Une erreur est survenue, merci de réessayer ulterieurement.",
+                    OutMessage = "An error has occurred, please try again later.",
                     OutCode = StatusCodes.Status500InternalServerError.ToString()
                 });
             }

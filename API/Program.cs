@@ -1,8 +1,15 @@
 using API.UseCases.Commands.Create;
 using API.UseCases.Queries.GetAll;
 using Infrastructure;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information() 
+    .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day) 
+    .CreateLogger();
+
+builder.Host.UseSerilog();  
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost", policy =>
